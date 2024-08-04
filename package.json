@@ -1,0 +1,31 @@
+{
+  "name": "@graphprotocol/contracts-monorepo",
+  "private": true,
+  "description": "Contracts monorepo for The Graph protocol",
+  "license": "GPL-2.0-or-later",
+  "repository": "git@github.com:graphprotocol/contracts.git",
+  "author": "The Graph team",
+  "packageManager": "yarn@4.0.2",
+  "workspaces": [
+    "packages/contracts",
+    "packages/data-edge",
+    "packages/eslint-graph-config",
+    "packages/sdk",
+    "packages/solhint-graph-config",
+    "packages/token-distribution"
+  ],
+  "scripts": {
+    "postinstall": "husky install",
+    "clean": "yarn workspaces foreach --all --parallel --verbose run clean",
+    "clean:all": "yarn clean && rm -rf node_modules packages/*/node_modules",
+    "build": "yarn workspaces foreach --all --verbose run build",
+    "lint": "yarn workspaces foreach --all --parallel --verbose run lint",
+    "test": "yarn workspaces foreach --all --parallel --verbose --interlaced run test"
+  },
+  "devDependencies": {
+    "@changesets/cli": "^2.27.1",
+    "@commitlint/cli": "^18.4.3",
+    "@commitlint/config-conventional": "^18.4.3",
+    "husky": "^8.0.3"
+  }
+}
